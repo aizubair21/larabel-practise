@@ -40,6 +40,6 @@ Route::get('contact/us',[UserController::class, 'show'])->name('contact.us');
 //if middleware pass the request. than, go to  the controller's 'UserController' create class. 
 //crate class view form pages. with contact form's input value.
 
-Route::post('/usr/submit', [UserController::class, 'create'])->name('form.submit');
+Route::post('/usr/submit', [UserController::class, 'create'])->name('form.submit')->middleware('UserInputChacker');
 
 // Route::post('/session/create', [UserController::class, 'index'])->name('form.submit');

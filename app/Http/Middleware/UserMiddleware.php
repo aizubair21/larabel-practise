@@ -17,16 +17,29 @@ class UserMiddleware
     public function handle(Request $request, Closure $next)
     {   
 
-        if ($request->email == "aizubair21@gmail.com" && $request->email != "") {
+        if ($request->email == "aizubair21@gmail.com") {
+                   
+            $validated = $request->validate ([
+                'name'=>['required','max:15','min:5'],
+                'email'=>['required','max:30'],
+                'phone'=>['max:11','min:10'],
+                'info'=>['nullable',]
+            ]);
             return $next($request);
         }else {
-             $roll = $request->userRoll;
-            if ($request->email != "") {
-
-                return redirect()->back()->with("alrt", $request->email. " not match with our condition.")->withInput();
+            $roll = $request->userRoll;
+            if ($request->email == ""){
+                 //__validate data with validator custome code__//
+            $validated = $request->validate ([
+                'name'=>['required','max:15','min:5'],
+                'email'=>['required','max:30'],
+                'phone'=>['max:11','min:10'],
+                'info'=>['nullable',]
+            ]);
             }else {
-                return redirect()->back();
+                return redirect()->back()->with("alrt", $request->email. " not match with our condition.")->withInput();
             }
+        
            
 
             //__send a response to view page. to show what's wrong. except() method stop buinding specific input to response__//

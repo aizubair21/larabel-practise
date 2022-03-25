@@ -31,11 +31,8 @@
     </pre>    
     @endif --}}
 
-    {{--     
-    //__push messaages__//
-    @if (session('success_session'))
-        <div class="text-success">{{ session('success_session') }}</div>
-    @endif --}}
+        
+    
 
     {{-- see alll error from erro handeler method --}}
     {{-- @if ($errors->any())
@@ -56,9 +53,14 @@
             <div class="col-lg-4">
                 <div class="card ">
                     <div class="card-body" >
+                    {{-- //__push messaages__// --}}
+                        @if (session('success_session'))
+                            <div class="text-success">{{ session('success_session') }}</div>
+                        @endif
+
                         <div>
                             <div>
-                                <input type="text" name="name" id="name" placeholder="Your name" autocomplete="off" class="@error('name') is-invalid @enderror form-control" value="{{ old('name') }}">
+                                <input type="text" name="name" id="name" placeholder="Your name" autocomplete="off" autofocus class=" @error('name') is-invalid @enderror form-control" value="{{ old('name') }}">
                             </div>
                             <div>
                                 @error ('name')
@@ -69,20 +71,20 @@
                         {{-- @if (old('name'))
                             <p>{{ old('name')}} is not correct.</p>
                         @endif --}}
-
                         <div>
-                            <input type="text" name="email" id="email" class="@error ('email') is-invalid @enderror form-control"  placeholder="Your email" value="{{ old('email') }}">
+                            <input type="text" name="email" id="email" class=" @error ('email') is-invalid @enderror form-control"  placeholder="Your email" value="{{ old('email') }}">
                             <div>
                                 @error ('email')
-                                    <strong class="text-danger">{{ $message }}</strong>
+                                    <strong class="text text-danger">{{ $message }}</strong>
                                 @enderror
                             </div>
                             {{-- this session alert messaage comes from usermiddleware if emal no correct with given --}}
-                            {{-- @If (session('alrt'))
-                                <div class="text-denger">
-                                    {{ session('alrt') }}
+                            {{ $err_alrt = ""}}
+                            @If (session('alrt') && session('alrt')!= "")
+                                <div class="text text-denger">
+                                    {{ $err_alrt = session('alrt') }}
                                 </div>
-                            @endif --}}
+                            @endif
                         </div><br>
 
                         <div>
