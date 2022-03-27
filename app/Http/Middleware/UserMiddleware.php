@@ -15,30 +15,23 @@ class UserMiddleware
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
-    {   
+    {  
+         $validated = $request->validate ([
+            'name'=>['required','max:15','min:5'],
+            'email'=>['required','max:30'],
+            'phone'=>['max:11','min:10'],
+            'info'=>['nullable',]
+        ]);
 
-        if ($request->email == "aizubair21@gmail.com") {
+        if ( $request->email == "aizubair21@gmail.com" ) {
                    
-            $validated = $request->validate ([
-                'name'=>['required','max:15','min:5'],
-                'email'=>['required','max:30'],
-                'phone'=>['max:11','min:10'],
-                'info'=>['nullable',]
-            ]);
+            
             return $next($request);
         }else {
             $roll = $request->userRoll;
-            if ($request->email == ""){
-                 //__validate data with validator custome code__//
-            $validated = $request->validate ([
-                'name'=>['required','max:15','min:5'],
-                'email'=>['required','max:30'],
-                'phone'=>['max:11','min:10'],
-                'info'=>['nullable',]
-            ]);
-            }else {
-                return redirect()->back()->with("alrt", $request->email. " not match with our condition.")->withInput();
-            }
+            
+                return redirect()->back()->with("alrt", " Email is not verified.")->withInput();
+            
         
            
 

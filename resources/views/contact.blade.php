@@ -60,7 +60,7 @@
 
                         <div>
                             <div>
-                                <input type="text" name="name" id="name" placeholder="Your name" autocomplete="off" autofocus class=" @error('name') is-invalid @enderror form-control" value="{{ old('name') }}">
+                                <input type="text" name="name" id="name" placeholder="Your name" autocomplete="off"  class=" @error('name') is-invalid @enderror form-control" value="{{ old('name') }}">
                             </div>
                             <div>
                                 @error ('name')
@@ -72,23 +72,26 @@
                             <p>{{ old('name')}} is not correct.</p>
                         @endif --}}
                         <div>
-                            <input type="text" name="email" id="email" class=" @error ('email') is-invalid @enderror form-control"  placeholder="Your email" value="{{ old('email') }}">
-                            <div>
-                                @error ('email')
-                                    <strong class="text text-danger">{{ $message }}</strong>
-                                @enderror
-                            </div>
+                            
                             {{-- this session alert messaage comes from usermiddleware if emal no correct with given --}}
                             {{ $err_alrt = ""}}
                             @If (session('alrt') && session('alrt')!= "")
-                                <div class="text text-denger">
-                                    {{ $err_alrt = session('alrt') }}
+                                <div class="text text-danger">
+                                    <input type="email" name="email" id="email " class="form-control is-invalid " autofocus value=" {{ old('email') }}">
+                                    <strong>{{ $err_alrt = session('alrt') }}</strong>
+                                </div>
+                            @else 
+                                <input type="text" name="email" id="email" class=" @error ('email') is-invalid  @enderror form-control"  placeholder="Your email" value="{{ old('email') }}">
+                                <div>
+                                    @error ('email')
+                                        <strong class="text text-danger">{{ $message }}</strong>
+                                    @enderror
                                 </div>
                             @endif
                         </div><br>
 
                         <div>
-                            <input type="number" name="phone" id="phone" placeholder="Your phon number" class="@error ('phone') is-invalid @enderror form-control"  value="{{ old('phone') }}" >
+                            <input type="number" name="phone" id="phone" placeholder="Your phon number" class="@error ('phone')  is-invalid @enderror form-control"  value="{{ old('phone') }}" >
                             <div>
                                 @error ('phone')
                                     <strong class="text-danger">{{ $message }}</strong>
