@@ -16,8 +16,12 @@ class RouteServiceProvider extends ServiceProvider
      * This is used by Laravel authentication to redirect users after login.
      *
      * @var string
+     * 
      */
     public const HOME = '/dashboard';
+
+    //define custome route. redirect 'profile' after successfully login or reginster
+    // public const HOME = '/profile';
 
     /**
      * The controller namespace for the application.
@@ -58,6 +62,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
+        });
+
+
+        //custome login attanped.
+        //More wrong attemped it block for 30 secound.
+        RateLimiter::for('login',function() {
+            return Limit::perMinute(2);
         });
     }
 }

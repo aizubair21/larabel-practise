@@ -2,63 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
-class UserController extends Controller
-{
-    //show method. show method use to view any html file
-    public function show(Request $request)
+use Illuminate\support\Facades\Log;
+
+
+class userController extends Controller
+
+{   
+    //index method
+    public function index(Request $request)
     {
-        return view('contact', ['request'=>$request]);
+       if ($this->middleware('auth')) {
+           return redirect()->route('dashboard');
+       }else {
+           return view('home');
+       }
     }
-   
-
-
-    //create method. use to open any htmo form data.
     public function create(Request $request)
     {
-        //__validate data with validator custome code__//
-        $validated = $request->validate ([
-            'name'=>['required','max:15','min:5'],
-            'email'=>['required','email','max:30'],
-            'phone'=>['max:11','min:10'],
-            'info'=>['nullable',]
+        $validated = $request->validate([
+            'name'=>['required','min:10'],
+            'email'=>['email','required','max:50']
         ]);
-
-
-        //__validate data using validator request_ baddddd_//
-        // $validated = $request->validated();
- 
-        // // Retrieve a portion of the validated input data...
-        // $validated = $request->safe()->only(['name', 'email']);
-
-        //__make data array__//
-        // $data = [];
-        // $data['name']=$request->name;
-        // $data['email']=$request->email;
-        // $data['phone']=$request->phone;
-
-        // // Store a piece of data in the session...
-        // session(['data' => $data]);
-
-        return view('form', ['request'=>$request]);
+        return back()->with('alert', 'form submitted..');
     }
 
-    //__index method__///
-    public function index(Request $request)
+    public function store()
     {   
-         //__validate data with validator custome code__//
-        
+        //write log into suerSubmit log page.
+        Log::channel('userSubmit')->info('user submit.');
 
-        //__ if data validated successfully. invoke below. data insert into session variable..__//
-        // $data = [];
-        // $data['name']=$request->name;
-        // $data['email']=$request->email;
-        // $data['phone']=$request->phone;
-
-        // // Store a piece of data in the session...
-        // session(['data' => $data]);
-
-
-        return redirect()->back()->withInput()->with('success_session','data inserted to session.');
+        //redirect to back
+        return redirect()->back();
     }
 }

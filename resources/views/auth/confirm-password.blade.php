@@ -26,7 +26,7 @@
                                 required autocomplete="current-password" />
             </div>
 
-            <div class="flex justify-end mt-4">
+            <div class="flex justify-end mt-4 btn btn-primary">
                 <x-button>
                     {{ __('Confirm') }}
                 </x-button>
