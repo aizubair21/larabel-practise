@@ -16,7 +16,7 @@ class userController extends Controller
        if ($this->middleware('auth')) {
            return redirect()->route('dashboard');
        }else {
-           return view('home');
+           return view('welcome');
        }
     }
     public function create(Request $request)

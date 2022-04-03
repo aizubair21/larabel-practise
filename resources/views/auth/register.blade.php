@@ -64,6 +64,13 @@
                                 </div>
                             </div>
 
+                            <div class="pt-2">
+                                <label class="form-control @error('is_agree') is_invalid @enderror " for="is_agree"><input class="form-checkbox  p-2" type="checkbox" name="is_agree" id="is_agree"> By clicking reginster, You are agree with our <a href="#">Terms</a> & <a href="#">Conditions.</a></label>
+                                @error('is_invalid')
+                                    <strong class="alert alert-danger"> {{$message}}</strong>
+                                @enderror
+                            </div>
+
                             <div class="d-flex justify-content-between align-items-center mt-4">
                                <div>
                                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

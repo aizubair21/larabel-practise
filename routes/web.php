@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [userController::class, 'index'])->name('/');
+Route::get('/', [userController::class, 'index'])->name('/');
 Route::view('/', 'welcome');
 
 
@@ -34,3 +34,5 @@ Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 Route::view('/about', 'about')->name('about');
 Route::view('/sessionView', 'sessionView');
 Route::view('/profile', 'profile')->name('profile');
+
+Route::view('confirm.password','auth.confirm-password');

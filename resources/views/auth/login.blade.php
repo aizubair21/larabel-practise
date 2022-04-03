@@ -59,26 +59,29 @@
                 {{-- custom login  --}}
                 <div class="container">
                     <div class="card" >
-                        <div class="card-head form-control bg-primary text-white text-center">
+                        <div class="card-head form-control bg-primary text-white text-center rounded-none">
                             <p style="padding: 29px; font-weight: 800; font-size: 34px;">Log In</p>
                         </div>
                         <div class="card-body p-20">
                             @if(session('alert'))
-                                <strong>{{ session('alert') }}</strong>
+                                <strong class="alert alert-danger">{{ session('alert') }}</strong>
+                            @elseif(session('auth_error'))
+                                <strong class="alert alert-danger">{{ session('auth_error') }}</strong>
                             @endif
                             <form action=" {{ route('login') }}" method="post">
                                     @csrf
                                     <div>
                                         <label class="form-label" for="u-email">Email:</label>
-                                        <input  type="email" class="form-control @error ('email') is-invalid @enderror" name="email" id="u-email" value="{{ old('email')}}" autofocus>
+                                        <input  type="email" class="form-control @error ('email') is-invalid @enderror" name="email" id="u-email" value="{{ old('email')}}" autofocus placeholder="your email : example@abc.xyz">
                                         @error('email') 
                                             <strong class="text text-danger"> {{ $message  }}</strong>
                                         @enderror
                                     </div>
+                                    <br>
             
                                     <div>
                                         <label class="form-label" for="u-password">Password: </label>
-                                        <input class="form-control @error ('password') is-invalid @enderror" type="password" name="password" id="u-password" value="{{ old('password') }}">
+                                        <input class="form-control @error ('password') is-invalid @enderror" type="password" name="password" id="u-password" value="{{ old('password') }}" placeholder="12345678">
                                         
                                     @error ('password')
                                         <strong class="text text-danger"> {{ $message  }}</strong>
@@ -99,13 +102,18 @@
                                         </div>
 
                                         <hr>
-                                        <div class=" mt-2">
+                                        <div class=" mt-2 d-flex justify-content-between">
+                                            <a href="{{route('register')}}">Create one</a>
+                                            
                                             @if (Route::has('password.request'))
                                                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                                                     {{ __('Forgot your password?') }}
                                                 </a>
                                             @endif
+
                                         </div>
+
+
                                     </div>
                                 </form>
                         </div>
