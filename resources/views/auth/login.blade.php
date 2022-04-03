@@ -58,7 +58,7 @@
 
                 {{-- custom login  --}}
                 <div class="container">
-                    <div class="card" >
+                    <div class="card shadow-lg" >
                         <div class="card-head form-control bg-primary text-white text-center rounded-none">
                             <p style="padding: 29px; font-weight: 800; font-size: 34px;">Log In</p>
                         </div>
