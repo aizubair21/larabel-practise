@@ -2,7 +2,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
         <div class="card" style="margin-top: 20px">
-            <div class="w-100 bg-primary text-white p-5" style="font-size: 20; font-weight:800;text-align:;">
+            <div class="w-110 bg-primary text-white p-5" style="font-size: 20; font-weight:800;text-align:;">
                 Email confirmation
             </div>
             <div class="card-body">
@@ -14,17 +14,18 @@
                             </a>
                         </x-slot>
 
-                        <div class="mb-4 text-sm text-gray-600 alert alert-info" style="text-align: justify">
-                            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                        <div class="mb-4 text-sm text-gray-600 alert alert-warning" style="text-align: justify">
+                            <strong class="text text-danger">Email Verify Needed !</strong><br>
+                            We just send verification lin to the email address; you provided during registration. Please Check your inbox. click "Active" button to verify your email.
                         </div>
 
                         @if (session('status') == 'verification-link-sent')
-                            <div class="mb-4 font-medium text-sm text-green-600">
+                            <div class="mb-4 font-medium text-sm text-green-600 alert alert-success">
                                 {{ __('A new verification link has been sent to the email address you provided during registration.') }}
                             </div>
                         @endif
 
-                        <div class="mt-4 flex items-center justify-between">
+                        <div class="mt-4 w-100 d-flex align-items-center justify-content-between">
                             <form method="POST" action="{{ route('verification.send') }}">
                                 @csrf
 

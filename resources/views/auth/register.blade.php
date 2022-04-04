@@ -23,7 +23,7 @@
                             <div>
                                 <label for="name" :value="__('Name')">Name :</label>
 
-                                <input id="name" class="form-control @error('name') is-invalid @enderror block mt-1 w-full" type="text" name="name" value="{{old('name')}}" required autofocus />
+                                <input id="name" class="form-control @error('name') is-invalid @enderror block mt-1 w-full" type="text" name="name" value="{{old('name')}}" required autofocus placeholder="Your name : Lorem Doe"/>
                                 <div>
                                     @error ('name') <strong class="text text-danger">{{ $message }}</strong> @enderror
                                 </div>
@@ -33,7 +33,7 @@
                             <div class="mt-2">
                                 <label for="email" :value="__('Email')">Email :</label>
 
-                                <input id="email" class="form-control  @error('email') is-invalid @enderror block mt-1 w-full" type="email" name="email" value="{{old('email')}}" required />
+                                <input id="email" class="form-control  @error('email') is-invalid @enderror block mt-1 w-full" type="email" name="email" value="{{old('email')}}" required placeholder="lorem@example.xyz"/>
                                 <div>
                                     @error ('email') <strong class="text text-danger">{{ $message}}</strong> @enderror
                                 </div>
@@ -46,7 +46,7 @@
                                 <input id="password" class="form-control  @error ('password') is-invalid @enderror block mt-1 w-full"
                                                 type="password"
                                                 name="password"
-                                                required autocomplete="new-password" />
+                                                required autocomplete="new-password" placeholder="Xyz45TnP%7c"/>
                                 
                             </div>
 
@@ -56,7 +56,7 @@
 
                                 <input id="password_confirmation" class="form-control  @error ('password') is-invalid @enderror block mt-1 w-full"
                                                 type="password"
-                                                name="password_confirmation" required />
+                                                name="password_confirmation" required  placeholder="Xyz45TnP%7c"/>
                                 <div>
                                     @error('password')
                                         <strong class="text text-danger"> {{ $message }} </strong>

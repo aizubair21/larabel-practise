@@ -1,14 +1,28 @@
-<div class="w-100" style="height:45px;margin-top:5px; box-shadow:0px 0px 2px 0px gray">
+<div class="w-100" style="height:50px; padding:5px;margin-top:5px; box-shadow:0px 0px 2px 0px gray">
     <div class="container">
         
     <nav style="background-color: white;" class="row">
     <style>
     .active {
-        color:white;
-        font-weight: 800;
-        background-color: rgb(9, 148, 9);
-        border-radius: 5px;
+        color:green;
+        background-color: rgb(74, 145, 74);
+        position: relative;
     }
+    .active a {
+        color:white;
+    }
+    /* .active::after {
+        content: "";
+        position: absolute;
+        bottom: -38px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25px;
+        height: 25px;
+        border-style: solid;
+        border-width: 12px;
+        border-color: green transparent transparent transparent;
+    } */
     li {
         list-style-type: none;
         z-index: 1;
@@ -19,8 +33,18 @@
         width:100px;
         height: 40px;
         text-align: center;
+        font-weight: 600;
+        font-size: 15px;
+        font-family: 'Times New Roman', Times, serif;
     }
-    .hover_bg {
+    li:hover a {
+        color: green;
+    }
+    li:hover {
+        background-color: rgb(173, 173, 173);
+    }
+    /* hover background effects start */
+    /* .hover_bg {
         background-color: rgb(7, 88, 7);
         width:100px;
         height: 40px;
@@ -32,33 +56,49 @@
         border-radius: 5px;
     }
     li:nth-child(1):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 338px;
     }
-    li:nth-child(2):hover~.hover_bg{
+    li:nth-child(2):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         position: absolute;
         left: 438px;
         transition: all linear .3s;
     }
     li:nth-child(3):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 538px;
         transition: all linear .3s;
     }
     li:nth-child(4):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 638px;
         transition: all linear .3s;
     }
     li:nth-child(5):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 738px;
         transition: all linear .3s;
     }
     li:nth-child(6):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 838px;
         transition:  all linear .3s;
     }
     li:nth-child(7):hover~.hover_bg {
+        font-weight:500;
+        transition: all linear .3s;
         left: 938px;
         transition:  all linear .3s;
-    }
+    } */
+
+    /* hover background effect end  */
     .nav-link {
         padding: 2px 3px;
         text-align: center;
@@ -68,25 +108,27 @@
 
     }
     </style>
+
+
         <div class="col-md-9" >
             <div class="row" style="border-right: 2px solid gray">
                 <div class="col-md-3">
                 <ul class=" navbar-nav">
                     <li class="nav-item">
-                            <a class="nav-link  text-black" href="{{URL::to('/')}}">CoderBees</a>
+                            <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees</a>
                     </li>
                 </ul>
             </div>
 
                 <div class="col-md-9">
                     <ul class="nav relative">
-                        <li class="nav-item"> <a class="nav-link text-black @if (request()->routeIs('dashboard')) active @endif" href="{{ URL::to('/dashboard')}}">Dashboard</a></li>
-                        <li class="nav-item"> <a class="nav-link text-black @if (request()->routeIs('about')) active @endif" href="{{ URL::to('/about')}}">About</a></li>
-                        <li class="nav-item"> <a class="nav-link text-black @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
-                        <li class="nav-item"> <a class="nav-link text-black @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
-                        <li class="nav-item"> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
-                        <li class="nav-item"> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
-                        <div class="hover_bg"></div>
+                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('dashboard')) active @endif" href="{{ URL::to('/dashboard')}}">Dashboard</a></li>
+                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('about')) active @endif" href="{{ URL::to('/about')}}">About</a></li>
+                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
+                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
+                        <li class=""> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
+                        <li class=""> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
+                        {{-- <div class="hover_bg"></div> --}}
                     </ul>
                 </div>
             </div>

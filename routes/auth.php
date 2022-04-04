@@ -53,4 +53,22 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+
+    //__viwe page route__//
+    Route::get('/contact', function (){
+        return view('contact');
+    } )->name('contact');
+    //__about page view__//
+    Route::get('/about ', function (){
+        return view('about');
+    })->name('about');
+
+    //__confirm your emal to chagne your profile__//
+    // Route::get('/update ', function (){
+    //     return view('profile');
+    // } )->name('profile');
+
+    // Route::view('confirm.password','confirm-password');
+    
 });

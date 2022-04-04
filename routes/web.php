@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\userController;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [userController::class, 'index'])->name('/');
 Route::view('/', 'welcome');
+Route::get('/', [userController::class, 'index'])->name('/');
 
 
 Route::get('/dashboard', function () {
@@ -28,11 +29,9 @@ require __DIR__.'/auth.php';
 
 Route::post('/user/add', [userController::class, 'create'])->name('user.submit');
 
-Route::get('/test', [userController::class, 'store']);
+//__test is my log file write or not__//
+// Route::get('/test', [userController::class, 'store']);
 
-Route::view('/contact', 'contact')->name('contact')->middleware('auth');
-Route::view('/about', 'about')->name('about');
-Route::view('/sessionView', 'sessionView');
-Route::view('/profile', 'profile')->name('profile');
-
-Route::view('confirm.password','auth.confirm-password');
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile')->middleware('auth','verified');
