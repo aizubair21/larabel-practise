@@ -3,13 +3,21 @@
         
     <nav style="background-color: white;" class="row">
     <style>
+    .navbar-nab .nab-link, .nav-link {
+        padding: 2px 3px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+    }
     .active {
-        color:green;
-        background-color: rgb(74, 145, 74);
+        color:white;
+        background-color: rgb(4, 170, 109);
         position: relative;
     }
-    .active a {
-        color:white;
+    .active:hover {
+        color: white;
     }
     /* .active::after {
         content: "";
@@ -27,7 +35,14 @@
         list-style-type: none;
         z-index: 1;
     }
-    a {
+    
+    .navbar-nav .nav-link {
+        padding-right: 2px;
+        padding-left: 2px;
+        width: 100%;
+    }
+    a, .nav-link {        
+        width: 100%;
         text-decoration: none;
         padding: 0px 3px;
         width:100px;
@@ -37,11 +52,11 @@
         font-size: 15px;
         font-family: 'Times New Roman', Times, serif;
     }
-    li:hover a {
-        color: green;
-    }
     li:hover {
         background-color: rgb(173, 173, 173);
+    }
+    a, .nav-item, .nav-link:not(.active):hover {
+        color:black;
     }
     /* hover background effects start */
     /* .hover_bg {
@@ -99,35 +114,24 @@
     } */
 
     /* hover background effect end  */
-    .nav-link {
-        padding: 2px 3px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
+    
     </style>
 
 
         <div class="col-md-9" >
             <div class="row" style="border-right: 2px solid gray">
                 <div class="col-md-3">
-                <ul class=" navbar-nav">
-                    <li class="nav-item">
-                            <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees</a>
-                    </li>
-                </ul>
-            </div>
+                    <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees</a>
+                </div>
 
                 <div class="col-md-9">
                     <ul class="nav relative">
-                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('dashboard')) active @endif" href="{{ URL::to('/dashboard')}}">Dashboard</a></li>
-                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('about')) active @endif" href="{{ URL::to('/about')}}">About</a></li>
-                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
-                        <li class=""> <a class="nav-link text-black @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
-                        <li class=""> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
-                        <li class=""> <a class="nav-link text-black" href="{{ URL::to('/')}}">Home</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('dashboard')) active @endif" href="{{ URL::to('/dashboard')}}">Dashboard</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('about')) active @endif" href="{{ URL::to('/about')}}">About</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('test-project')) active @endif" href="{{ URL::to('/test-project')}}">Test</a></li>
+                        <li class=""> <a class="nav-link" href="{{ URL::to('/')}}">Home</a></li>
                         {{-- <div class="hover_bg"></div> --}}
                     </ul>
                 </div>
@@ -147,16 +151,16 @@
                 <div class="accordion-body mt-1" style="box-shadow: 0px 0px 2px gray; padding:2px;">
                     <ul class="navbar-nav nav">
                         <li class="nav-item">
-                            <a class="nav-link text-black justify-content-start @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile') }}">Profile View</a>
+                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile') }}">Profile View</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Setting</a>
+                            <a class="nav-link justify-content-start @if (request()->routeIs('password.reset')) active @endif" href="{{ route('password.reset') }}">Reset password</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Message</a>
+                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Message</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Nofitication</a>
+                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Nofitication</a>
                         </li>
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="post">

@@ -18,7 +18,7 @@
                     </div>
 
                     <!-- Validation Errors -->
-                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <x-auth-validation-errors class="mb-4 alert alert-warning" :errors="$errors" />
 
                     <form method="POST" action="{{ route('password.confirm') }}">
                     @csrf

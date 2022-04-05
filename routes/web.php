@@ -35,3 +35,13 @@ Route::post('/user/add', [userController::class, 'create'])->name('user.submit')
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile')->middleware('auth','verified');
+
+Route::get('/test-project', [userController::class, 'hash_test'])->name('test-project');
+
+Route::post('/form/password/test', [userController::class, 'test'])->name('test.form.submit');
+
+Route::view('/password/reset','custom_password_reset')->name('password.reset');
+
+Route::post('/password/changed', [userController::class, 'change_password'])->name('changer_password');
+
+Route::view('/app','layouts.app');

@@ -1,17 +1,18 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/" style="overflow: hidden">
                 <x-application-logo class="fill-current text-gray-100" />
             </a>
         </x-slot>
-
-
+ --}}
+@extends('../layouts.app')
+@section('content')
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
                 <!-- Session Status -->
-                <x-auth-session-status class="mb-4 alert" :status="session('status')" />
+                <x-auth-session-status class="mb-4 alert alert-success" :status="session('status')" />
 
                 <!-- Validation Errors -->
                 {{-- <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
@@ -103,10 +104,10 @@
 
                                         <hr>
                                         <div class=" mt-2 d-flex justify-content-between">
-                                            <a href="{{route('register')}}">Create one</a>
+                                            <a class="text text-decoration-none text-strong"href="{{route('register')}}">Create one</a>
                                             
                                             @if (Route::has('password.request'))
-                                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                                <a class="underline text-sm text-gray-600 hover:text-gray-900 text-danger text-decoration-none" href="{{ route('password.request') }}">
                                                     {{ __('Forgot your password?') }}
                                                 </a>
                                             @endif
@@ -122,6 +123,9 @@
 
             <div class="col-lg-4"></div>
         </div>
-        
+@endsection        
+
+
+{{--         
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
