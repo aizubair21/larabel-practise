@@ -3,7 +3,7 @@
 use App\Http\Controllers\userController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\contactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
-Route::get('/', [userController::class, 'index'])->name('/');
+// Route::get('/', [userController::class, 'index'])->name('/');
 
 
 Route::get('/dashboard', function () {
@@ -25,6 +25,17 @@ Route::get('/dashboard', function () {
 
 
 require __DIR__.'/auth.php';
+
+//__contact route__//
+
+
+
+
+
+
+
+
+
 
 
 Route::post('/user/add', [userController::class, 'create'])->name('user.submit');
@@ -40,7 +51,7 @@ Route::get('/test-project', [userController::class, 'hash_test'])->name('test-pr
 
 Route::post('/form/password/test', [userController::class, 'test'])->name('test.form.submit');
 
-Route::view('/password/reset','custom_password_reset')->name('password.reset');
+Route::view('/password/changes','custom_password_reset')->name('password.changes');
 
 Route::post('/password/changed', [userController::class, 'change_password'])->name('changer_password');
 

@@ -4,3 +4,8 @@ a {
 li {
     list-style-type: none;
 }
+.header {
+    font-size: 25px;
+    color: white;
+    background-color: green;;
+}

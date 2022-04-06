@@ -18,6 +18,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <link rel="stylesheet" href="{{ asset('../css/style.css') }}" type="text/stylesheet">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -127,6 +128,12 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="p-5 mt-20">
+            <h1>This is custom CSS template</h1>
+        </div>
+        <div class="header">this is header</div>
 
         
     </body>

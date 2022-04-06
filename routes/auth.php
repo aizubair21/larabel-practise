@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\contactController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -56,9 +57,9 @@ Route::middleware('auth')->group(function () {
 
 
     //__viwe page route__//
-    Route::get('/contact', function (){
-        return view('contact');
-    } )->name('contact');
+    Route::get('/contact',[contactController::class, 'index'])->name('contact');
+
+
     //__about page view__//
     Route::get('/about ', function (){
         return view('about');

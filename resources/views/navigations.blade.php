@@ -1,4 +1,4 @@
-<div class="w-100" style="height:50px; padding:5px;margin-top:5px; box-shadow:0px 0px 2px 0px gray">
+<div class="w-100" style="padding:5px;margin-top:5px; box-shadow:0px 0px 2px 0px gray">
     <div class="container">
         
     <nav style="background-color: white;" class="row">
@@ -119,7 +119,7 @@
 
 
         <div class="col-md-9" >
-            <div class="row" style="border-right: 2px solid gray">
+            <div class="row" style="border-right: 2px solid gray; background-color:white; z-index:99">
                 <div class="col-md-3">
                     <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees</a>
                 </div>
@@ -139,7 +139,7 @@
         </div>
         <div class="col-md-3">
             <div class="accordion">
-                <div class="accordion-header " id="flush-main">
+                <div class="accordion-header bg-white" id="flush-main">
                     
                     <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsebody" aria-expanded="false" aria-controls="flush-collapsebody">
                         <img width="25" height="25" style="border-radious:50%; padding:0px 2px" src="#" alt="">
@@ -147,29 +147,29 @@
                     </button>
 
                 </div>
-                <div id="flush-collapsebody" class="accordion-collapse collapse" aria-labelledby="flush-main" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body mt-1" style="box-shadow: 0px 0px 2px gray; padding:2px;">
-                    <ul class="navbar-nav nav">
-                        <li class="nav-item">
-                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile') }}">Profile View</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link justify-content-start @if (request()->routeIs('password.reset')) active @endif" href="{{ route('password.reset') }}">Reset password</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Message</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Nofitication</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <input class="form-control btn btn-warning" type="submit" value="Log out">
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                <div id="flush-collapsebody" class="accordion-collapse collapse bh-wwhite" aria-labelledby="flush-main" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body mt-1" style="box-shadow: 0px 0px 2px gray; padding:2px; background-color:white; z-index:99">
+                        <ul class="navbar-nav nav">
+                            <li class="nav-item">
+                                <a class="nav-link justify-content-start @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile') }}">Profile View</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link justify-content-start @if (request()->routeIs('password.changes')) active @endif" href="{{ route('password.changes') }}">Reset password</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Message</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Nofitication</a>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <input class="form-control btn btn-warning" type="submit" value="Log out">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
