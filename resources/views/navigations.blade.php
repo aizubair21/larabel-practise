@@ -154,7 +154,7 @@
                                 <a class="nav-link justify-content-start @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile') }}">Profile View</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link justify-content-start @if (request()->routeIs('password.changes')) active @endif" href="{{ route('password.changes') }}">Reset password</a>
+                                <a class="nav-link justify-content-start @if (request()->routeIs('password.changes')) active @endif" href="{{ route('password.changes') }}">Change Password</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link justify-content-start @if (request()->routeIs('profile')) @endif" href="#">Message</a>

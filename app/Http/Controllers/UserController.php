@@ -74,4 +74,5 @@ class userController extends Controller
             return redirect()->back()->with("error","Opps !, Your Current Password Is't Correct");
         }
     }
+
 }

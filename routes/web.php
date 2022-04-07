@@ -4,6 +4,8 @@ use App\Http\Controllers\userController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\contactController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,18 +29,22 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //__contact route__//
+Route::post('/contact/add',[contactController::class, "store"])->name('contact.add');
+
+//__update contact__//
+Route::post('/contact/{id}/updateed', [contactController::class, 'update'])->name('contact.updated');
+
+//__contact update view file__//
+Route::get('/contact/update/{id}',[contactController::class, 'create'])->name('contact.update');
+
+//__contact delete__//
+Route::get('/contact/delete/{id}', [contactController::class, 'destroy'])->name('contact.delete');
 
 
 
 
 
-
-
-
-
-
-
-Route::post('/user/add', [userController::class, 'create'])->name('user.submit');
+Route::post('/user/add', [userController::class, 'store'])->name('user.submit');
 
 //__test is my log file write or not__//
 // Route::get('/test', [userController::class, 'store']);
@@ -51,7 +57,9 @@ Route::get('/test-project', [userController::class, 'hash_test'])->name('test-pr
 
 Route::post('/form/password/test', [userController::class, 'test'])->name('test.form.submit');
 
-Route::view('/password/changes','custom_password_reset')->name('password.changes');
+Route::get('password/changes', function () {
+    return view('custom_password_reset');
+})->name('password.changes');
 
 Route::post('/password/changed', [userController::class, 'change_password'])->name('changer_password');
 
