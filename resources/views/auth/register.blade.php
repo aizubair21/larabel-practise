@@ -17,9 +17,19 @@
                         <div>
                             <label for="name" :value="__('Name')">Name :</label>
 
-                            <input id="name" class="form-control @error('name') is-invalid @enderror block mt-1 w-full" type="text" name="name" value="{{old('name')}}" required autofocus placeholder="Your name : Lorem Doe"/>
+                            <input id="name" class="form-control @error('name') is-invalid @enderror block mt-1 w-full" type="text" name="name" value="{{old('name')}}" autofocus placeholder="Your name : Lorem Doe"/>
                             <div>
                                 @error ('name') <strong class="text text-danger">{{ $message }}</strong> @enderror
+                            </div>
+                        </div>
+
+                        {{-- user name --}}
+                        <div>
+                            <label for="user_name" :value="__('user_name')">User_Name :</label>
+
+                            <input id="user_name" class="form-control @error('user_name') is-invalid @enderror block mt-1 w-full" type="text" name="user_name" value="{{old('user_name')}}" autofocus placeholder="Your User Name : Lorem Doe"/>
+                            <div>
+                                @error ('user_name') <strong class="text text-danger">{{ $message }}</strong> @enderror
                             </div>
                         </div>
 
