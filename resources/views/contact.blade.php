@@ -1,10 +1,8 @@
 @extends('../layouts.app')
 @section('content')
-<div id="main" class="d-flex pe-10">
-    <div id="sidebar p-2">
-        This is side bar
-    </div>
-     <div class="container">
+<div id="main" class="row">
+    <div class=""> </div>
+     <div class="container col-6" >
         <div class="card">
             <div class="card-body">
                 <p class="alert alert-info"> See Your Contact </p>
@@ -62,8 +60,6 @@
                     <tbody>
                         
                         @foreach($contact as $key=>$users)
-                            @if ($users->user_id == $current_user_id)
-                            
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td> {{ $users->first_name . " " . $users->last_name }}</td>
@@ -81,10 +77,10 @@
                                     </button>
                                 </td>
                             </tr>
-                            @endif
-                        @endforeach 
-                    </tbody>
-                </table>
+                            @endforeach 
+                        </tbody>
+                    </table>
+                    {{ $contact->onEachSide(5)->links() }}
             </div>
         </div>
 

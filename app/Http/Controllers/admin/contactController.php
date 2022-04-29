@@ -20,7 +20,7 @@ class contactController extends Controller
     public function index()
     {
 		$current_user_id = Auth::id();
-        $contact_table = DB::table('contacts')->get();
+        $contact_table = DB::table('contacts')->simplePaginate(10);
         // dd($contact_table);
 
         return View('contact',['contact'=>$contact_table, 'current_user_id'=>$current_user_id]);
