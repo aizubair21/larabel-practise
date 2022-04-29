@@ -1,6 +1,6 @@
 @extends('../layouts.app')
 @section('content')
-<div id="main" class="d-flex">
+<div id="main" class="d-flex pe-10">
     <div id="sidebar p-2">
         This is side bar
     </div>
@@ -117,7 +117,7 @@
                         </div>
                         <div>
                             <label for="phone">Phone :</label>
-                            <input type="number" name="phone" id="phone" placeholder="01234565789" class="form-control form-input @error("phone") is_invalid @enderror" value="{{ old("phone") }}">
+                            <input type="number" name="phone" id="phone" placeholder="01234565789" maxlength="11" class="form-control form-input @error("phone") is_invalid @enderror" value="{{ old("phone") }}">
                             @error('phone')
                                 <strong class="text text-danger">{{ $message }}</strong>
                             @enderror

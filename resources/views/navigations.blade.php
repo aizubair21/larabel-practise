@@ -121,7 +121,7 @@
         <div class="col-md-9" >
             <div class="row" style="border-right: 2px solid gray; background-color:white; z-index:99">
                 <div class="col-md-3">
-                    <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees</a>
+                    <a class="nav-link  text-black" href="{{URL::to('/')}}"> coderbees </a>
                 </div>
 
                 <div class="col-md-9">
@@ -131,7 +131,7 @@
                         <li class=""> <a class="nav-link @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('test-project')) active @endif" href="{{ URL::to('/test-project')}}">Test</a></li>
-                        <li class=""> <a class="nav-link" href="{{ URL::to('/')}}">Home</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('home')) active @endif" href="{{ route('home')}}">Home</a></li>
                         {{-- <div class="hover_bg"></div> --}}
                     </ul>
                 </div>

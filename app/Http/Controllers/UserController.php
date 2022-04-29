@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class userController extends Controller
 
@@ -73,6 +75,11 @@ class userController extends Controller
         }else {
             return redirect()->back()->with("error","Opps !, Your Current Password Is't Correct");
         }
+    }
+
+    public function data_inserted()
+    {
+        
     }
 
 }

@@ -32,9 +32,10 @@ class contactController extends Controller
     {   
 
         $request->validate([
-            'first_name'=>['required','max:10'],
+            'first_name'=>['required'],
             'last_name'=>['max:10'],
             'phone'=>['required','max:11','min:10'],
+            'email'=>['email']
 
         ]);
         DB::table('contacts')->insert([
@@ -59,6 +60,14 @@ class contactController extends Controller
     // updte contact method
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'first_name'=>['required'],
+            'last_name'=>['max:10'],
+            'phone'=>['required','max:11'],
+            'email'=>['email'],
+
+        ]);
+
         DB::table('contacts')->where('id',$id)->update([
         'user_id'=>Auth::id(),
         'first_name'=>$request->first_name,

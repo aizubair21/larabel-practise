@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\contactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,4 +64,34 @@ Route::get('password/changes', function () {
 
 Route::post('/password/changed', [userController::class, 'change_password'])->name('changer_password');
 
-Route::view('/app','layouts.app');
+// Route::view('/app','layouts.app');
+
+
+Route::get('/home', function () {
+
+    $data = DB::table('contacts')->get();
+    return view('home',['row'=>$data]);
+
+})->name('home');
+
+
+Route::get('/insert_user',function () {
+
+    for ($i=2; $i < 10; $i++) { 
+        $first_name = 'zubair'.$i;
+        $last_name = 'jahan';
+        $phone = '012547852'.$i;
+        $email = 'email'.$i.'@ex.xyz';
+
+        DB::table('contacts')->insert([
+
+            'user_id'=>1,
+            'first_name'=>$first_name,
+            'last_name'=>$last_name,
+            'phone'=>$phone,
+            'email'=>$email,
+        ]);
+    }
+        
+    return redirect()->route('home')->with(['status','New user generated.']);
+})->name('insert_user');

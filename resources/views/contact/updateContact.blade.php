@@ -13,7 +13,7 @@
                     @if (session('success'))
                         <div class="d-flex justify-content-between align-items-center w-100 p-4">
                             <div class="alert alert-success w-100">
-                                update success
+                                successfully updated
                                 <div class="btn btn-info" style="float:right">
                                     <a href=" {{ route('contact') }}">All Contact</a>
                                 </div>
@@ -39,7 +39,7 @@
                                     </div>
                                     <div>
                                         <label for="update_phone">Phone :</label>
-                                        <input type="number" name="phone" id="update_phone" placeholder="01234565789" class="form-control form-input " value="{{ $contacts->phone}}">
+                                        <input type="number" name="phone" id="update_phone" placeholder="01234565789" maxlength="11" class="form-control form-input " value="{{ $contacts->phone}}">
                                         @error('phone')
                                             <strong class="text text-danger">{{ $message }}</strong>
                                         @enderror

@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Home') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,14 +24,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    {{-- {{ $result }} --}}
+                    @foreach ($row as $key=>$item)
+                        <pre>
+                            {{ print_r($item) }}<br>
+                        </pre>
+                    @endforeach
+                    <br>
                     {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-<strong>You are logged in</strong>
 @endsection
 </body>
 </html>
