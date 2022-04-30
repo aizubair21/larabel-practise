@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Home') }}</div>
+                <div class="card-header">{{ __('All User') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,14 +24,26 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <th>Sl</th>
+                            <th>Name</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                        </thead>
+                        <tbody>
+                                @foreach ($row as $key=>$item)
+                                    <tr>
+                                        <td> {{  $key }}</td>
+                                        <td> {{  $item->name }}</td>
+                                        <td> {{  $item->user_name }}</td>
+                                        <td> {{  $item->email }}</td>
+                                    </tr>
+                                @endforeach
+                        </tbody>
+                    </table>
                     {{-- {{ $result }} --}}
-                    @foreach ($row as $key=>$item)
-                        <pre>
-                            {{ print_r($item) }}<br>
-                        </pre>
-                    @endforeach
-                    <br>
-                    {{ __('You are logged in!') }}
+                   
                 </div>
             </div>
         </div>

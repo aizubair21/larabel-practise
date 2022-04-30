@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker;
+use App\Models\User;
 class userSeeder extends Seeder
 {
     /**
@@ -13,11 +15,10 @@ class userSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name'=>'amimul',
-            'user_name'=>'amimul21',
-            'email'=>'amimul@example.xyz',
-            'password'=>'password',
-        ]);
+        //make fake data using faker by Query Builder
+        //All my factory data defined to UserFactory file
+        // here i just call the factory
+
+        User::factory()->count(10)->create();
     }
 }

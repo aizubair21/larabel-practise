@@ -69,7 +69,7 @@ Route::post('/password/changed', [userController::class, 'change_password'])->na
 
 Route::get('/home', function () {
 
-    $data = DB::table('contacts')->get();
+    $data = DB::table('users')->get();
     return view('home',['row'=>$data]);
 
 })->name('home');
