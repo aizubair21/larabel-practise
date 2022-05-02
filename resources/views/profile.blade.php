@@ -15,32 +15,41 @@
     @include('navigations')
 
     <div class="container">
-        <div class="row">
-            <div class="col-2"></div>
+        <div class="row p-5 ">
+            <div class="col-6">
+                image
+            </div>
             <div class="col-6">
                 <div class="card">
-                    <div class="card-header">{{ __('Users Profile') }}</div>
+                    <div class="w-100 bg-primary text-white p-3 text-align-center font-weight-bold">
+                        <h3>About You</h3>
+                    </div>
                     <div class="card-body">
-                        <table class="table table-stripped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Title </th>
-                                    <th>About </th>
-                                    <th>Phone </th>
-                                    <th>Address </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <td>{{  $profile->title }}</td>
-                                <td> {{ $profile->about }} </td>
-                                <td> {{ $profile->phone }}</td>
-                                <td> {{ $profile->address }}</td>
-                            </tbody>
-                       </table>
+                        <style>
+                            label {
+                                width:100px;
+                            }
+                            input {
+                                background-color: transparent;
+                                border: none;
+                                outline: none;
+                            }
+                        </style>
+                        <div class="name"></div>
+                            <input type="text" class="" name="Name" id="Name" disabled value="{{ $users->name }}">
+                        </div>
+
+                        <div class="user_name">
+                            <input type="text" name="user_ame" id="user_ame" disabled value="{{ $users->user_name }}">
+                        </div>
+
+                        <div class="About">
+                            <input type="text" name="about" id="about" value=" {{ $profiles->about}}">
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-4"></div>
         </div>
         
     </div>

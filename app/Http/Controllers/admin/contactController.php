@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\contact;
+use App\Models\profile;
+
 class contactController extends Controller
 {
     public function __construct()
@@ -23,8 +26,11 @@ class contactController extends Controller
         $contact_table = user::find(Auth::id())->contact()->simplePaginate(10);
         // dd($contact_table);
 
-        return View('contact',['contact'=>$contact_table, 'current_user_id'=>$current_user_id]);
+        return View('contact',[
 
+            'contact'=>$contact_table,
+        
+        ]);
     }
 
     //__create method. add a new contact__//
@@ -38,7 +44,7 @@ class contactController extends Controller
             'email'=>['email']
 
         ]);
-        DB::table('contacts')->insert([
+       $contacts = contact::insert([
             'user_id'=>Auth::id(),
             'first_name'=>$request->first_name,
             'last_name'=>$request->last_name,
@@ -53,7 +59,7 @@ class contactController extends Controller
     //_index __//
     public function create(Request $request, $id)
     {
-        $contact_table = DB::table('contacts')->where('id',$id)->get();
+        $contact_table =contact::where('id',$id)->get();
         return view('contact.updateContact',['contact'=>$contact_table]);
     }
 
@@ -68,14 +74,16 @@ class contactController extends Controller
 
         ]);
 
-        DB::table('contacts')->where('id',$id)->update([
+       contact::where('id',$id)->update([
         'user_id'=>Auth::id(),
         'first_name'=>$request->first_name,
         'last_name'=>$request->last_name,
         'phone'=>$request->phone,
         'email'=>$request->email,
         'address'=>$request->address,
-        'group'=>$request->group]);
+        'group'=>$request->group
+    
+        ]);
         // dd($request->group);
 
         return redirect()->back()->with('success','Contact Updated.');
@@ -84,7 +92,7 @@ class contactController extends Controller
     // delete contact method 
     public function destroy($id)
     {
-        DB::table('contacts')->where('id',$id)->delete();
+       contact::where('id',$id)->delete();
         return redirect()->back()->with('success','Successfully Deleted !');
     }
 }

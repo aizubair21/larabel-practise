@@ -4,10 +4,13 @@ use App\Http\Controllers\userController;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\contactController;
+use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\contact;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +55,6 @@ Route::post('/user/add', [userController::class, 'store'])->name('user.submit');
 //__test is my log file write or not__//
 // Route::get('/test', [userController::class, 'store']);
 
-Route::get('/profile', function () {
-    $users = user::find(Auth::id())->profile;
-    return view('profile',['profile'=>$users]);
-})->name('profile')->middleware('auth');
 
 Route::get('/test-project', [userController::class, 'hash_test'])->name('test-project');
 
@@ -79,7 +78,7 @@ Route::get('/home', function () {
 
 })->name('home');
 
-
+//fake data insert to database. to make it check
 Route::get('/insert_user',function () {
 
     for ($i=2; $i < 10; $i++) { 
@@ -88,7 +87,7 @@ Route::get('/insert_user',function () {
         $phone = '012547852'.$i;
         $email = 'email'.$i.'@ex.xyz';
 
-        DB::table('contacts')->insert([
+       contact::insert([
 
             'user_id'=>1,
             'first_name'=>$first_name,
@@ -98,5 +97,13 @@ Route::get('/insert_user',function () {
         ]);
     }
         
-    return redirect()->route('home')->with(['status','New user generated.']);
+    return redirect()->route('home')->with(['status','New fake user generated.']);
 })->name('insert_user');
+
+
+//profile route
+Route::get('/profile', 
+
+[profileController::class, 'index']  
+ 
+)->name('profile')->middleware('auth');
