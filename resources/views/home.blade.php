@@ -34,7 +34,7 @@
                         <tbody>
                                 @foreach ($row as $key=>$item)
                                     <tr>
-                                        <td> {{  $key }}</td>
+                                        <td> {{  $item->id }}</td>
                                         <td> {{  $item->name }}</td>
                                         <td> {{  $item->user_name }}</td>
                                         <td> {{  $item->email }}</td>

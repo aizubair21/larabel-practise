@@ -49,6 +49,7 @@
                     <thead>
                         <tr>
                             <th>SL No</th>
+                            <th>U Id</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -62,6 +63,7 @@
                         @foreach($contact as $key=>$users)
                             <tr>
                                 <td>{{ ++$key }}</td>
+                                <td> {{ $users->id }}</td>
                                 <td> {{ $users->first_name . " " . $users->last_name }}</td>
                                 <td> {{ $users->email }}</td>
                                 <td> {{ $users->phone }}</td>

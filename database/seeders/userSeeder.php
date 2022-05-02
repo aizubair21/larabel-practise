@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker;
 use App\Models\User;
+use App\Models\profile;
+
 class userSeeder extends Seeder
 {
     /**
@@ -19,6 +21,8 @@ class userSeeder extends Seeder
         //All my factory data defined to UserFactory file
         // here i just call the factory
 
-        User::factory()->count(10)->create();
+        //User::factory()->count(10)->create();
+
+        profile::factory()->count(10)->create();
     }
 }

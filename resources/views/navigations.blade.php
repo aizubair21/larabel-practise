@@ -128,7 +128,7 @@
                     <ul class="nav relative">
                         <li class=""> <a class="nav-link @if (request()->routeIs('dashboard')) active @endif" href="{{ URL::to('/dashboard')}}">Dashboard</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('about')) active @endif" href="{{ URL::to('/about')}}">About</a></li>
-                        <li class=""> <a class="nav-link @if (request()->routeIs('contact')) active @endif" href="{{ URL::to('/contact')}}">Contact</a></li>
+                        <li class=""> <a class="nav-link @if (request()->routeIs('contact')) active @endif" href="{{ route('contact')}}">Contact</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('profile')) active @endif" href="{{ URL::to('/profile')}}">Profile</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('test-project')) active @endif" href="{{ URL::to('/test-project')}}">Test</a></li>
                         <li class=""> <a class="nav-link @if (request()->routeIs('home')) active @endif" href="{{ route('home')}}">Home</a></li>
@@ -143,7 +143,7 @@
                     
                     <button class="btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsebody" aria-expanded="false" aria-controls="flush-collapsebody">
                         <img width="25" height="25" style="border-radious:50%; padding:0px 2px" src="#" alt="">
-                        {{Auth::user()->name}}
+                        {{Auth::user()->user_name}}
                     </button>
 
                 </div>

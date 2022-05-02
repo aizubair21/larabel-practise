@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\contactController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,8 +53,9 @@ Route::post('/user/add', [userController::class, 'store'])->name('user.submit');
 // Route::get('/test', [userController::class, 'store']);
 
 Route::get('/profile', function () {
-    return view('profile');
-})->name('profile')->middleware('auth','verified');
+    $users = user::find(Auth::id())->profile;
+    return view('profile',['profile'=>$users]);
+})->name('profile')->middleware('auth');
 
 Route::get('/test-project', [userController::class, 'hash_test'])->name('test-project');
 
@@ -68,8 +71,10 @@ Route::post('/password/changed', [userController::class, 'change_password'])->na
 
 
 Route::get('/home', function () {
-
-    $data = DB::table('users')->get();
+    // i use user model to retrive data from users table
+    // $data = user::where('id',5)->get();
+    $data = Auth::id();
+    dd($data);
     return view('home',['row'=>$data]);
 
 })->name('home');

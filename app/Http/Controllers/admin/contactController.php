@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 class contactController extends Controller
 {
     public function __construct()
@@ -20,7 +20,7 @@ class contactController extends Controller
     public function index()
     {
 		$current_user_id = Auth::id();
-        $contact_table = DB::table('contacts')->simplePaginate(10);
+        $contact_table = user::find(Auth::id())->contact()->simplePaginate(10);
         // dd($contact_table);
 
         return View('contact',['contact'=>$contact_table, 'current_user_id'=>$current_user_id]);

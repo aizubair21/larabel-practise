@@ -15,7 +15,33 @@
     @include('navigations')
 
     <div class="container">
-        <h3 class="p-2">customize you profile</h3>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">{{ __('Users Profile') }}</div>
+                    <div class="card-body">
+                        <table class="table table-stripped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Title </th>
+                                    <th>About </th>
+                                    <th>Phone </th>
+                                    <th>Address </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>{{  $profile->title }}</td>
+                                <td> {{ $profile->about }} </td>
+                                <td> {{ $profile->phone }}</td>
+                                <td> {{ $profile->address }}</td>
+                            </tbody>
+                       </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
         
     </div>
 
