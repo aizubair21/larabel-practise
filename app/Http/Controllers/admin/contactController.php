@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\contact;
 use App\Models\profile;
+use Illuminate\Database\DBAL\TimestampType;
 
 class contactController extends Controller
 {
@@ -75,7 +76,6 @@ class contactController extends Controller
         ]);
 
        contact::where('id',$id)->update([
-        'user_id'=>Auth::id(),
         'first_name'=>$request->first_name,
         'last_name'=>$request->last_name,
         'phone'=>$request->phone,

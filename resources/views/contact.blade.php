@@ -64,7 +64,7 @@
                             <tr>
                                 <td>{{ $users->id }}</td>
                                 <td> {{ $users->user_id }}</td>
-                                <td> {{ $users->first_name . " " . $users->last_name }}</td>
+                                <td> {{ $users->first_name }}</td>
                                 <td> {{ $users->email }}</td>
                                 <td> {{ $users->phone }}</td>
                                 <td> {{ $users->group }}</td>

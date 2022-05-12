@@ -10,6 +10,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\contact;
+use App\Models\profile;
 
 
 /*
@@ -71,10 +72,13 @@ Route::post('/password/changed', [userController::class, 'change_password'])->na
 
 Route::get('/home', function () {
     // i use user model to retrive data from users table
-    // $data = user::where('id',5)->get();
-    $data = Auth::id();
-    dd($data);
-    return view('home',['row'=>$data]);
+    $data = user::where('id',5)->get();
+    //$data = Auth::id();
+    //dd(auth::user());
+    //get user through model.
+    $user = Auth()->user();
+    //dd($user);
+    return view('home',['user'=>$user]);
 
 })->name('home');
 

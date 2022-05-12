@@ -40,11 +40,11 @@
                         </div>
 
                         <div class="user_name">
-                            <input type="text" name="user_ame" id="user_ame" disabled value="{{ $users->user_name }}">
+                            <input type="text" name="user_name" id="user_name" disabled value="{{ $users->user_name }}">
                         </div>
 
                         <div class="About">
-                            <input type="text" name="about" id="about" value=" {{ $profiles->about}}">
+                            <input type="text" disabled name="about" id="about" value=" {{ $profiles->about}}">
                         </div>
 
                     </div>
@@ -59,5 +59,12 @@
     
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
+
+    {{-- custom script  --}}
+    <script>
+        // var collection =   '';
+        // document.getElementsByTagName("input")[2].removeAttribute('disabled');
+        // console.log( collection = document.getElementsByTagName("input")[2]..disabled);
+    </script>
 </body>
 </html>

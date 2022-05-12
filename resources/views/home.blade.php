@@ -32,14 +32,12 @@
                             <th>Email</th>
                         </thead>
                         <tbody>
-                                @foreach ($row as $key=>$item)
-                                    <tr>
-                                        <td> {{  $item->id }}</td>
-                                        <td> {{  $item->name }}</td>
-                                        <td> {{  $item->user_name }}</td>
-                                        <td> {{  $item->email }}</td>
-                                    </tr>
-                                @endforeach
+                                <tr>
+                                    <td> {{  $user->id }}</td>
+                                    <td> {{  $user->name }}</td>
+                                    <td> {{  $user->user_name }}</td>
+                                    <td> {{  $user->email }}</td>
+                                </tr>
                         </tbody>
                     </table>
                     {{-- {{ $result }} --}}
@@ -49,6 +47,8 @@
         </div>
     </div>
 </div>
+
+{{-- <img src="../image/circle-user.png" alt="Image nai"> --}}
 @endsection
 </body>
 </html>
