@@ -33,16 +33,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+//__viwe page route__//
+Route::get('/contact', [contactController::class, 'index'])->name('contact');
 
 //__contact route__//
-Route::post('/contact/add',[contactController::class, "store"])->name('contact.add');
+Route::post('/contact/add', [contactController::class, "store"])->name('contact.add');
 
 //__update contact__//
 Route::post('/contact/{id}/updateed', [contactController::class, 'update'])->name('contact.updated');
 
 //__contact update view file__//
-Route::get('/contact/update/{id}',[contactController::class, 'create'])->name('contact.update');
+Route::get('/contact/update/{id}', [contactController::class, 'create'])->name('contact.update');
 
 //__contact delete__//
 Route::get('/contact/delete/{id}', [contactController::class, 'destroy'])->name('contact.delete');
@@ -72,42 +74,42 @@ Route::post('/password/changed', [userController::class, 'change_password'])->na
 
 Route::get('/home', function () {
     // i use user model to retrive data from users table
-    $data = user::where('id',5)->get();
+    $data = user::where('id', 5)->get();
     //$data = Auth::id();
     //dd(auth::user());
     //get user through model.
     $user = Auth()->user();
     //dd($user);
-    return view('home',['user'=>$user]);
-
+    return view('home', ['user' => $user]);
 })->name('home');
 
 //fake data insert to database. to make it check
-Route::get('/insert_user',function () {
+Route::get('/insert_user', function () {
 
-    for ($i=2; $i < 10; $i++) { 
-        $first_name = 'zubair'.$i;
+    for ($i = 2; $i < 10; $i++) {
+        $first_name = 'zubair' . $i;
         $last_name = 'jahan';
-        $phone = '012547852'.$i;
-        $email = 'email'.$i.'@ex.xyz';
+        $phone = '012547852' . $i;
+        $email = 'email' . $i . '@ex.xyz';
 
-       contact::insert([
+        contact::insert([
 
-            'user_id'=>1,
-            'first_name'=>$first_name,
-            'last_name'=>$last_name,
-            'phone'=>$phone,
-            'email'=>$email,
+            'user_id' => 1,
+            'first_name' => $first_name,
+            'last_name' => $last_name,
+            'phone' => $phone,
+            'email' => $email,
         ]);
     }
-        
-    return redirect()->route('home')->with(['status','New fake user generated.']);
+
+    return redirect()->route('home')->with(['status', 'New fake user generated.']);
 })->name('insert_user');
 
 
 //profile route
-Route::get('/profile', 
+Route::get(
+    '/profile',
 
-[profileController::class, 'index']  
- 
+    [profileController::class, 'index']
+
 )->name('profile')->middleware('auth');
